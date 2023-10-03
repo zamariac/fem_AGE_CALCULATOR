@@ -33,17 +33,30 @@ hr {
     width: 30%;
 }
 
+.label-error {
+    color: hsl(0, 100%, 67%);
+}
+
 .input label {
     font-size: 12px;
     padding-bottom: 3px;
 }
 
-.input input {
+input {
     background-color: hsl(0, 0%, 94%);
     border-radius: 3px;
     border: solid 1px hsl(0, 0%, 86%);
     padding: 6px;
 
+}
+
+.input-error {
+    border: solid 1px hsl(0, 100%, 67%);
+}
+
+.input .error-message {
+    font-size: 10px;
+    color: hsl(0, 100%, 67%);
 }
 
 .submit {
