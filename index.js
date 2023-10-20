@@ -1,5 +1,3 @@
-console.log('hello');
-
 //Initialize methods so its available elsewhere -- object oriented approach in ES6
 class FormValidator {
     constructor(form, fields) {
@@ -23,7 +21,7 @@ class FormValidator {
                 const input = document.querySelector(`#${field}`);
                 self.validateFields(input)
 
-                console.log(input)
+                // console.log(input)
             })
             
         })
@@ -37,7 +35,7 @@ class FormValidator {
                 self.validateFields(input)
             })
 
-            console.log(input)
+            // console.log(input)
         })
     }
 
@@ -45,8 +43,47 @@ class FormValidator {
         if (field.value.trim() === '') {
             this.setStatus(field, `Must be a valid ${field.previousElementSibling.innerText.toLowerCase()} `, "error")
         } else {
-
+            this.setStatus(field, null, 'success')
         }
+
+        if (field.value) {
+            if (!isNaN(field.value)) {
+                this.setStatus(field, null, "success")
+            } else {
+                this.setStatus(field, "Please enter a valid number", "error")
+            }
+
+            if ( field.id === "day" ) {
+                if (field.value >= 1 && field.value <= 31) {
+                    this.setStatus(field, null, "success")
+                } else {
+                    this.setStatus(field, "Please enter a number between 1 & 31", "error")
+                }
+            }
+
+            if ( field.id === "month" ) {
+                if (field.value >= 1 && field.value <= 12) {
+                    this.setStatus(field, null, "success")
+                } else {
+                    this.setStatus(field, "Please enter a number between 1 & 12", "error")
+                }
+            }
+
+            if ( field.id === "year" ) {
+                const today = new Date();
+                if (field.value >= 1 && field.value <= today.getFullYear()) {
+                    this.setStatus(field, null, "success")
+                } else {
+                    this.setStatus(field, "Please enter a number no greater than this year", "error")
+                }
+            }
+    
+            return field.value;
+        }
+
+ // getFullYear() yyyy
+// getMonth()	Get month as a number (0-11)
+// getDate() 1-31
 
     }
 
@@ -57,6 +94,8 @@ class FormValidator {
 
         if (status === 'success') {
             if (errorMessage) { errorMessage.innerText = '' }
+            errorLabel.classList.remove('label-error');
+            errorInput.classList.remove('input-error');
         }
 
         if (status === 'error') {
