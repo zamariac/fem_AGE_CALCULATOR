@@ -12,7 +12,7 @@ body {
     padding: 30px 20px;
     border-radius: 10px 10px 80px 10px;
     max-width: 500px;
-    margin: 15% auto;
+    margin: 10% auto;
 }
 
 form {
@@ -63,6 +63,32 @@ input {
     color: hsl(0, 100%, 67%);
     font-style: italic;
     padding-top: 2px;
+}
+
+.button-wrap {
+    border-bottom: solid 1px hsl(0, 0%, 86%);
+    position: relative;
+    margin: 35px 0;
+}
+
+.button {
+    border: none;    
+    padding: 0;
+    width: 0%;
+    position: absolute;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+
+}
+
+.svg-button {
+    padding: 10px;
+    background-color: hsl(259, 100%, 65%);
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
 }
 
 .submit {

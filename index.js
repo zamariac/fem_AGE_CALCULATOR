@@ -31,8 +31,8 @@ class FormValidator {
         let self = this;
         this.fields.forEach(field => {
             const input = document.querySelector(`#${field}`);
-            input.addEventListener('input', event => {
-                self.validateFields(input)
+            input.addEventListener('submit', event => {
+                self.validateFields(button)
             })
 
             // console.log(input)
