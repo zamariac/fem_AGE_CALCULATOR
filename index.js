@@ -73,8 +73,7 @@ class FormValidator {
                     const currentMonth = new Date();
                     const months = field.value - currentMonth.getMonth();
                     const outputMonths =  document.querySelector('.months');
-                    outputMonths.textContent = months / 12;
-                    console.log(months);
+                    outputMonths.textContent = months;
 
                 } else {
                     this.setStatus(field, "Please enter a number between 1 & 12", "error")
