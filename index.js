@@ -21,7 +21,7 @@ class FormValidator {
                 const input = document.querySelector(`#${field}`);
                 self.validateFields(input)
 
-                // console.log(input)
+                console.log(input.value)
             })
             
         })
@@ -55,35 +55,49 @@ class FormValidator {
 
             if ( field.id === "day" ) {
                 if (field.value >= 1 && field.value <= 31) {
-                    this.setStatus(field, null, "success")
+                    this.setStatus(field, null, "success");
+                    const currentDay = new Date();
+                    const days = field.value - currentDay.getDate();
+                    const outputDays = document.querySelector('.days');
+                    outputDays.textContent = days;
+
                 } else {
                     this.setStatus(field, "Please enter a number between 1 & 31", "error")
                 }
             }
 
+            // Need to add 31 day month exception
             if ( field.id === "month" ) {
                 if (field.value >= 1 && field.value <= 12) {
-                    this.setStatus(field, null, "success")
+                    this.setStatus(field, null, "success");
+                    const currentMonth = new Date();
+                    const months = field.value - currentMonth.getMonth();
+                    const outputMonths =  document.querySelector('.months');
+                    outputMonths.textContent = months / 12;
+                    console.log(months);
+
                 } else {
                     this.setStatus(field, "Please enter a number between 1 & 12", "error")
                 }
             }
 
             if ( field.id === "year" ) {
-                const today = new Date();
-                if (field.value >= 1 && field.value <= today.getFullYear()) {
+                const currentYear = new Date();
+                if (field.value >= 1 && field.value <= currentYear.getFullYear()) {
                     this.setStatus(field, null, "success")
+                    const years = field.value - currentYear.getFullYear();
+                    const outputYear = document.querySelector('.years');
+                    outputYear.textContent = years;
                 } else {
                     this.setStatus(field, "Please enter a number no greater than this year", "error")
                 }
             }
     
             return field.value;
+            // age = (years × 365) + (months × 31) + days
         }
 
- // getFullYear() yyyy
-// getMonth()	Get month as a number (0-11)
-// getDate() 1-31
+        console.log(field.value);
 
     }
 
@@ -106,7 +120,6 @@ class FormValidator {
         }
     }
 }
-
 
 // Form fields 
 const form = document.querySelector('.form');
